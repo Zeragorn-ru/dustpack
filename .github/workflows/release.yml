@@ -14,23 +14,8 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Create mrpack
-      run: |
-        VERSION="${{ github.ref_name }}"
-        touch modrinth.index.json
-        echo "
-        {
-          "formatVersion": 1,
-          "game": "minecraft",
-          "versionId": "$VERSION",
-          "name": "DustPack",
-          "dependencies": {
-            "minecraft": "1.20.1",
-            "fabric-loader": ">=0.18.0"
-          }
-        }" > modrinth.index.json
-        
+      run: 
         zip -qr ./modpack.mrpack . -x ".git" ".github" "README.md" 
-        ls
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
