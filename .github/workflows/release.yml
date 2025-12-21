@@ -15,15 +15,9 @@ jobs:
 
     - name: Create mrpack
       run: |
-        pwd
-        zip -qr ../modpack.mrpack \
-          . -x "libraries/*" "crash-reports/*" "logs/*" "saves/*" "*.lock"
-        
         VERSION="${{ github.ref_name }}"
-        
-        unzip ../modpack.mrpack -d ../temp/
-        cat > ../temp/modrinth.index.json << EOF
-        {
+        touch modrinth.index.json
+        echo "{
           "formatVersion": 1,
           "game": "minecraft",
           "versionId": "$VERSION",
@@ -32,11 +26,10 @@ jobs:
             "minecraft": "1.20.1",
             "fabric-loader": ">=0.18.0"
           }
-        }
-        EOF
-        cd ../temp
-        zip -qr ../modpack.mrpack .
-
+        }" > modrinth.index.json
+        
+        zip -qr ./modpack.mrpack
+        ls
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
