@@ -1,0 +1,16 @@
+filename = 'easierpowderedsnow-1.0.1.jar'
+name = 'Easier Powdered Snow'
+side = 'server'
+x-prismlauncher-loaders = [ 'fabric' ]
+x-prismlauncher-mc-versions = [ '1.19', '1.19.1', '1.19.2', '1.19.3', '1.19.4', '1.20', '1.20.1', '1.20.2', '1.20.3', '1.20.4' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = 'd834de2412c3dce981676c188f38d7323f554a3886b57031f3a54156f4a6b7244bc459cc7b868b4fcf0bb8638166ecc61eca48d9ef1749faa0bb5018b84cd6e0'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/EXgM6gpn/versions/wJp7csWF/easierpowderedsnow-1.0.1.jar'
+
+[update.modrinth]
+mod-id = 'EXgM6gpn'
+version = 'wJp7csWF'

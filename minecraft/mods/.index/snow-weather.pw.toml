@@ -1,0 +1,16 @@
+filename = 'Snowy-weather-v1.2.2-1.20x.jar'
+name = 'Snowy Weather'
+side = 'both'
+x-prismlauncher-loaders = [ 'fabric' ]
+x-prismlauncher-mc-versions = [ '1.20', '1.20.1', '1.20.2', '1.20.3', '1.20.4' ]
+x-prismlauncher-release-type = 'release'
+
+[download]
+hash = '948250f6b41168ed38497ecb70df3b7c8596e1390e4636498487f7bf2d4afbfc9ec12b5ee26da644258ef04756a4bbf29e3d1c02c8840a4f1c4bd0f2b0c074b9'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/foXnssaG/versions/E3kDRfD7/Snowy-weather-v1.2.2-1.20x.jar'
+
+[update.modrinth]
+mod-id = 'foXnssaG'
+version = 'E3kDRfD7'
