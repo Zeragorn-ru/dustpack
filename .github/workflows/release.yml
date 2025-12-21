@@ -15,6 +15,7 @@ jobs:
 
     - name: Create mrpack
       run: |
+        pwd
         zip -qr ../modpack.mrpack \
           . -x "libraries/*" "crash-reports/*" "logs/*" "saves/*" "*.lock"
         
