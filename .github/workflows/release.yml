@@ -28,7 +28,7 @@ jobs:
           }
         }" > modrinth.index.json
         
-        zip -qr ./modpack.mrpack
+        zip -qr ./modpack.mrpack .
         ls
     - name: Create Release
       uses: ncipollo/release-action@v1
