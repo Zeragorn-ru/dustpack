@@ -1,0 +1,54 @@
+name: mrpack auto release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+* Release"
+    workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Create mrpack
+      run: |
+        cd minecraft
+        zip -qr ../modpack.mrpack \
+          . -x "libraries/*" "crash-reports/*" "logs/*" "saves/*" "*.lock"
+        
+        VERSION="${{ github.ref_name }}"
+        SHA1=$(sha1sum ../modpack.mrpack | cut -d' ' -f1)
+        SHA512=$(sha512sum ../modpack.mrpack | cut -d' ' -f1)
+        
+        unzip ../modpack.mrpack -d ../temp/
+        cat > ../temp/modrinth.index.json << EOF
+        {
+          "formatVersion": 1,
+          "game": "minecraft",
+          "versionId": "$VERSION",
+          "versionNumber": "${VERSION% Release}",
+          "name": "DustPack",
+          "summary": "modpack for private server",
+          "dependencies": {
+            "minecraft": "1.20.1",
+            "fabric-loader": ">=0.18.0"
+          },
+          "files": [{
+            "path": "modrinth.index.json",
+            "hashes": {"sha1": "$SHA1", "sha512": "$SHA512"},
+            "downloads": ["https://github.com/${{ github.repository }}/releases/latest/download/modpack.mrpack"]
+          }]
+        }
+        EOF
+        cd ../temp
+        zip -qr ../modpack.mrpack .
+
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: "${{ github.ref_name }}"
+        artifacts: "modpack.mrpack"
