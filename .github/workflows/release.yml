@@ -5,7 +5,10 @@ on:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+*Release"
   workflow_dispatch:
-
+    inputs:
+        tag:
+          description: 'Tag to release'
+          required: true
 
 jobs:
   build:
@@ -13,12 +16,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set tag
+      id: set_tag
+      run: |
+        if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+          echo "TAG=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
+        else
+          echo "TAG=${GITHUB_REF_NAME}" >> $GITHUB_ENV
+
     - name: Create mrpack
       run: |
         zip -qr ./modpack.mrpack . -x ".git" ".github" "README.md" 
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
-        tag: ${{ github.ref_name }}
-        name: "${{ github.ref_name }}"
+        tag: ${{ env.TAG  }}
+        name: ${{ env.TAG }}
         artifacts: "modpack.mrpack"
