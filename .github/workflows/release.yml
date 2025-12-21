@@ -15,13 +15,10 @@ jobs:
 
     - name: Create mrpack
       run: |
-        cd minecraft
         zip -qr ../modpack.mrpack \
           . -x "libraries/*" "crash-reports/*" "logs/*" "saves/*" "*.lock"
         
         VERSION="${{ github.ref_name }}"
-        SHA1=$(sha1sum ../modpack.mrpack | cut -d' ' -f1)
-        SHA512=$(sha512sum ../modpack.mrpack | cut -d' ' -f1)
         
         unzip ../modpack.mrpack -d ../temp/
         cat > ../temp/modrinth.index.json << EOF
@@ -29,18 +26,11 @@ jobs:
           "formatVersion": 1,
           "game": "minecraft",
           "versionId": "$VERSION",
-          "versionNumber": "${VERSION% Release}",
           "name": "DustPack",
-          "summary": "modpack for private server",
           "dependencies": {
             "minecraft": "1.20.1",
             "fabric-loader": ">=0.18.0"
-          },
-          "files": [{
-            "path": "modrinth.index.json",
-            "hashes": {"sha1": "$SHA1", "sha512": "$SHA512"},
-            "downloads": ["https://github.com/${{ github.repository }}/releases/latest/download/modpack.mrpack"]
-          }]
+          }
         }
         EOF
         cd ../temp
