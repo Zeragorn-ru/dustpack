@@ -27,7 +27,7 @@ jobs:
 
     - name: Create mrpack
       run: |
-        rm -rf .git .github README.md
+        rm -rf .git .github README.md assets
         zip -qr ./dustpack.mrpack .
     - name: Create Release
       uses: ncipollo/release-action@v1
