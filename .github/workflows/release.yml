@@ -27,10 +27,10 @@ jobs:
 
     - name: Create mrpack
       run: |
-        zip -qr ./modpack.mrpack . -x ".git" ".github" "README.md" 
+        zip -qr ./dustpack.mrpack . -x ".git" ".github" "README.md" 
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ env.TAG  }}
         name: ${{ env.TAG }}
-        artifacts: "modpack.mrpack"
+        artifacts: "dustpack.mrpack"
