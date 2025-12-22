@@ -1,4 +1,4 @@
-# Dustpack — модпак для Minecraft
+# Dustpack
 
 
 
