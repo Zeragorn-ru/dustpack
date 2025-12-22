@@ -1,0 +1,3 @@
+resourcePacks:["vanilla","file/BACAP Better RU 2.3.zip","file/BACAP Language Pack 1.19.zip","file/frog suit.zip","file/Midnighttiggers-FCT-Default_1.20_V8.zip"]
+incompatibleResourcePacks:["file/Midnighttiggers-FCT-Default_1.20_V8.zip"]
+lang:ru_ru
