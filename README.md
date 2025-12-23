@@ -36,7 +36,7 @@
 После установки увидите главный экран:
 
 
-
+<img src="assets/start_screen.png" width="500" />
 
 
 
