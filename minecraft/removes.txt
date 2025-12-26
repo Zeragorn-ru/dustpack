@@ -1,0 +1,2 @@
+mods/Snowy-weather-v1.2.2-1.20x.jar
+mods/armorhide-1.1.2.jar
