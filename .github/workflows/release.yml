@@ -28,10 +28,10 @@ jobs:
     - name: Create mrpack
       run: |
         rm -rf .git .github README.md assets
-        zip -qr ./dustpack.mrpack .
+        zip -qr ./dustpack.mrpack . -x "removes.txt"
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ env.TAG  }}
         name: ${{ env.TAG }}
-        artifacts: "dustpack.mrpack"
+        artifacts: "dustpack.mrpack removes.txt"
