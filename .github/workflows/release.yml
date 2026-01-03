@@ -34,4 +34,4 @@ jobs:
       with:
         tag: ${{ env.TAG  }}
         name: ${{ env.TAG }}
-        artifacts: "dustpack.mrpack removes.txt"
+        artifacts: "dustpack.mrpack,removes.txt"
