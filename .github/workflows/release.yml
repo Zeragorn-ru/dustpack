@@ -27,11 +27,12 @@ jobs:
 
     - name: Create mrpack
       run: |
-        rm -rf .git .github README.md assets
-        zip -qr ./dustpack.mrpack . -x "removes.txt"
+        zip -q dustpack.mrpack instance.cfg modrinth.index.json updater.jar
+        zip -qr update.zip minecraft updater.jar
+
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ env.TAG  }}
         name: ${{ env.TAG }}
-        artifacts: "dustpack.mrpack,removes.txt"
+        artifacts: "dustpack.mrpack,removes.txt,update.zip"
