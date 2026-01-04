@@ -27,8 +27,8 @@ jobs:
 
     - name: Create mrpack
       run: |
-        zip -q dustpack.mrpack instance.cfg modrinth.index.json minecraft/updater.jar
-        zip -qr update.zip minecraft updater.jar
+        zip -r dustpack.mrpack instance.cfg modrinth.index.json ./minecraft/updater.jar
+        zip -qr update.zip minecraft
 
     - name: Create Release
       uses: ncipollo/release-action@v1
