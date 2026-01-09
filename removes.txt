@@ -1,3 +1,6 @@
+mods/emixx-neoforge-1.2.3.jar
+kubejs/server_scripts/
+mods/BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar
 mods/borderless-neoforge-1.21.4-1.7.3-all.jar
 mods/watut-neoforge-1.21.0-1.2.7.jar
 mods/particlerain-4.0.0-beta.3+1.20.1-fabric.jar
